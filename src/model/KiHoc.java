@@ -9,7 +9,6 @@ package model;
  * @author long0
  */
 public class KiHoc {
-
     private String id;
     private String tenKyHoc;
     private int namHoc;
@@ -47,7 +46,7 @@ public class KiHoc {
         this.namHoc = namHoc;
     }
 
-    public Object[] toDataRow() {
+    public Object[] toDataKiHoc() {
         return new Object[]{this.id, this.tenKyHoc, this.namHoc};
     }
 

@@ -21,7 +21,7 @@ public class KiHocService {
     String sql = null;
     ResultSet rs = null;
 
-    public List<KiHoc> getAll() {
+    public List<KiHoc> getKiHoc() throws SQLException {
         sql = "SELECT * FROM KYHOC";
         List<KiHoc> list = new ArrayList<>();
         try {
@@ -36,10 +36,17 @@ public class KiHocService {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
     }
 
-    public int add(KiHoc kh) {
+    public int addKiHoc(KiHoc kh) throws SQLException {
         sql = "INSERT INTO KYHOC (ID, TENKYHOC, NAMHOC) VALUES (?,?, ?)";
         try {
             con = DBContext.getConnection();
@@ -51,10 +58,17 @@ public class KiHocService {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
     }
 
-    public int update(KiHoc kh, String id) {
+    public int updateKiHoc(KiHoc kh, String id) throws SQLException {
         sql = "UPDATE KYHOC SET ID= ?, TENKYHOC = ?, NAMHOC = ? WHERE ID = ?";
         try {
             con = DBContext.getConnection();
@@ -67,10 +81,17 @@ public class KiHocService {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
     }
 
-    public int deleteKiHoc(String id) {
+    public int deleteKiHoc(String id) throws SQLException {
         sql = "DELETE  FROM KYHOC WHERE ID = ?";
         try {
             con = DBContext.getConnection();
@@ -80,10 +101,17 @@ public class KiHocService {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
     }
 
-    public boolean checkTrungID(String id) {
+    public boolean checkTrungIDKiHoc(String id) throws SQLException {
         sql = "SELECT * FROM KYHOC WHERE ID = ?";
         try {
             con = DBContext.getConnection();
@@ -95,6 +123,13 @@ public class KiHocService {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
         return false;
     }

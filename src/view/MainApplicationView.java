@@ -452,7 +452,7 @@ public class MainApplicationView extends javax.swing.JFrame {
             .addComponent(statisticLb, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        labelMenu.setIcon(new javax.swing.ImageIcon("D:\\Java_source\\project_canhan\\QLSV\\QuanLiSinhVien_Alige\\src\\content\\menu.png"));
+        labelMenu.setIcon(new javax.swing.ImageIcon("src\\content\\menu.png"));
         labelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelMenuMouseClicked(evt);

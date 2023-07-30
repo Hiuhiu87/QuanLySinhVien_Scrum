@@ -28,7 +28,6 @@ public class MainApplicationView extends javax.swing.JFrame {
         Thread openMenuThread = new Thread(() -> {
             for (int i = 0; i < MENU_WIDTH; i++) {
                 panelMenu.setSize(i, MENU_HEIGHT);
-                panelMain.setSize(1239, 747);
                 try {
                     Thread.sleep(2);
                 } catch (InterruptedException ex) {
@@ -43,7 +42,6 @@ public class MainApplicationView extends javax.swing.JFrame {
         Thread closeMenuThread = new Thread(() -> {
             for (int i = MENU_WIDTH; i > 0; i--) {
                 panelMenu.setSize(i, MENU_HEIGHT);
-                panelMain.setSize(1239 + MENU_WIDTH, 747);
                 try {
                     Thread.sleep(2);
                 } catch (InterruptedException ex) {
@@ -112,6 +110,8 @@ public class MainApplicationView extends javax.swing.JFrame {
         panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panelContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelMenu.setBackground(new java.awt.Color(58, 73, 87));
 
@@ -463,17 +463,23 @@ public class MainApplicationView extends javax.swing.JFrame {
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(qlsvPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(qlkhPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(staffPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(orderPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(discountPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(userPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(statisticPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(qlsvPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qlkhPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staffPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(orderPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(discountPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(statisticPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(labelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,31 +504,10 @@ public class MainApplicationView extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
-        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
-        panelMain.setLayout(panelMainLayout);
-        panelMainLayout.setHorizontalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1239, Short.MAX_VALUE)
-        );
-        panelMainLayout.setVerticalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
-        );
+        panelContainer.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 180, 747));
 
-        javax.swing.GroupLayout panelContainerLayout = new javax.swing.GroupLayout(panelContainer);
-        panelContainer.setLayout(panelContainerLayout);
-        panelContainerLayout.setHorizontalGroup(
-            panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelContainerLayout.createSequentialGroup()
-                .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelContainerLayout.setVerticalGroup(
-            panelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        panelMain.setLayout(new java.awt.BorderLayout());
+        panelContainer.add(panelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 0, 1130, 747));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -613,6 +598,7 @@ public class MainApplicationView extends javax.swing.JFrame {
 
     private void labelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuMouseClicked
         closeMenuBar();
+//        labelOpenMenu.setVisible(true);
     }//GEN-LAST:event_labelMenuMouseClicked
 
     /**

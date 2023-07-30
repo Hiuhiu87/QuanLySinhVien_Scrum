@@ -40,6 +40,8 @@ public class QuanLyKyHocView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbKiHoc = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(1293, 747));
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 51));
         jLabel4.setText("QUẢN LÍ KỲ HỌC");

@@ -35,22 +35,8 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="panelContainer">
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="panelMenu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="panelMain" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="panelMenu" alignment="0" max="32767" attributes="0"/>
-              <Component id="panelMain" alignment="1" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="panelMenu">
@@ -59,21 +45,36 @@
               <Color blue="57" green="49" red="3a" type="rgb"/>
             </Property>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="-2" y="0" width="180" height="747"/>
+            </Constraint>
+          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="qlsvPanelContainer" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="qlkhPanelContainer" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="staffPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="orderPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="discountPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="userPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="statisticPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Component id="jPanel12" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="labelMenu" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="qlsvPanelContainer" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="qlkhPanelContainer" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="staffPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="orderPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="discountPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="userPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="statisticPanelBtn" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="jPanel12" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="labelMenu" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -663,19 +664,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelMain">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="183" y="0" width="1130" height="747"/>
+            </Constraint>
+          </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1239" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="747" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
         </Container>
       </SubComponents>
     </Container>

@@ -5,8 +5,7 @@
 package view;
 
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -15,41 +14,13 @@ import javax.swing.JPanel;
  */
 public class MainApplicationView extends javax.swing.JFrame {
 
-    public static final int MENU_WIDTH = 187;
-    public static final int MENU_HEIGHT = 747;
     private QuanLyKyHocView quanLyKyHocPanel;
+    private QuanLySinhVienView quanLySinhVienView;
 
     public MainApplicationView() {
         initComponents();
         quanLyKyHocPanel = new QuanLyKyHocView();
-    }
-
-    private void openMenuBar() {
-        Thread openMenuThread = new Thread(() -> {
-            for (int i = 0; i < MENU_WIDTH; i++) {
-                panelMenu.setSize(i, MENU_HEIGHT);
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(MainApplicationView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        openMenuThread.start();
-    }
-
-    private void closeMenuBar() {
-        Thread closeMenuThread = new Thread(() -> {
-            for (int i = MENU_WIDTH; i > 0; i--) {
-                panelMenu.setSize(i, MENU_HEIGHT);
-                try {
-                    Thread.sleep(2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(MainApplicationView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-        closeMenuThread.start();
+        quanLySinhVienView = new QuanLySinhVienView();
     }
 
     private void onClicked(JPanel panelBackGroud, JPanel panelStatus) {
@@ -58,7 +29,7 @@ public class MainApplicationView extends javax.swing.JFrame {
     }
 
     private void unClicked(JPanel panelBackGroud, JPanel panelStatus) {
-        panelBackGroud.setBackground(new Color(23, 44, 76));
+        panelBackGroud.setBackground(new Color(49, 61, 73));
         panelStatus.setOpaque(false);
     }
 
@@ -86,7 +57,7 @@ public class MainApplicationView extends javax.swing.JFrame {
         qlsvLbClick = new javax.swing.JLabel();
         qlsvLbStatus = new javax.swing.JPanel();
         qlkhPanelContainer = new javax.swing.JPanel();
-        productLb = new javax.swing.JLabel();
+        qlkhLb = new javax.swing.JLabel();
         productStatusLb = new javax.swing.JPanel();
         staffPanelBtn = new javax.swing.JPanel();
         staffLb = new javax.swing.JLabel();
@@ -106,7 +77,6 @@ public class MainApplicationView extends javax.swing.JFrame {
         statisticPanelBtn = new javax.swing.JPanel();
         statisticLb = new javax.swing.JLabel();
         statisticStatusLb = new javax.swing.JPanel();
-        labelMenu = new javax.swing.JLabel();
         panelMain = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,12 +131,12 @@ public class MainApplicationView extends javax.swing.JFrame {
         qlkhPanelContainer.setBackground(new java.awt.Color(49, 61, 73));
         qlkhPanelContainer.setPreferredSize(new java.awt.Dimension(163, 36));
 
-        productLb.setFont(new java.awt.Font("Source Sans Pro Black", 0, 14)); // NOI18N
-        productLb.setForeground(new java.awt.Color(255, 255, 255));
-        productLb.setText("QUẢN LÝ KỲ HỌC");
-        productLb.addMouseListener(new java.awt.event.MouseAdapter() {
+        qlkhLb.setFont(new java.awt.Font("Source Sans Pro Black", 0, 14)); // NOI18N
+        qlkhLb.setForeground(new java.awt.Color(255, 255, 255));
+        qlkhLb.setText("QUẢN LÝ KỲ HỌC");
+        qlkhLb.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                productLbMouseClicked(evt);
+                qlkhLbMouseClicked(evt);
             }
         });
 
@@ -192,12 +162,12 @@ public class MainApplicationView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, qlkhPanelContainerLayout.createSequentialGroup()
                 .addComponent(productStatusLb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productLb, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addComponent(qlkhLb, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
         qlkhPanelContainerLayout.setVerticalGroup(
             qlkhPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(productStatusLb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-            .addComponent(productLb, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+            .addComponent(qlkhLb, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
         staffPanelBtn.setBackground(new java.awt.Color(49, 61, 73));
@@ -452,40 +422,26 @@ public class MainApplicationView extends javax.swing.JFrame {
             .addComponent(statisticLb, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
-        labelMenu.setIcon(new javax.swing.ImageIcon("src\\content\\menu.png"));
-        labelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelMenuMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(qlsvPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(qlkhPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(staffPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(orderPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(discountPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(statisticPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(labelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(qlsvPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(qlkhPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discountPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statisticPanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addComponent(labelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(291, Short.MAX_VALUE)
                 .addComponent(qlsvPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(qlkhPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -525,116 +481,44 @@ public class MainApplicationView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void qlsvLbClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlsvLbClickMouseClicked
-//        this.onClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(discountPanelBtn, discountStatusLb);
-//        showPanel(panelSell);
+        showPanel(quanLySinhVienView);
+        onClicked(qlsvPanelContainer, qlsvLbStatus);
+        unClicked(qlkhPanelContainer, qlsvLbStatus);
     }//GEN-LAST:event_qlsvLbClickMouseClicked
 
-    private void productLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productLbMouseClicked
+    private void qlkhLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlkhLbMouseClicked
         showPanel(quanLyKyHocPanel);
-        System.out.println("ok");
-    }//GEN-LAST:event_productLbMouseClicked
+        onClicked(qlkhPanelContainer, qlsvLbStatus);
+        unClicked(qlsvPanelContainer, qlsvLbStatus);
+    }//GEN-LAST:event_qlkhLbMouseClicked
 
     private void staffLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staffLbMouseClicked
-//        this.onClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(statisticPanelBtn, statisticStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
-//        this.unClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(discountPanelBtn, discountStatusLb);
-//        showPanel(panelStaff);
+        JOptionPane.showMessageDialog(this, "Chưa Phát Triển");
     }//GEN-LAST:event_staffLbMouseClicked
 
     private void orderLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderLbMouseClicked
-//        this.onClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
-//        this.unClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(statisticPanelBtn, statisticStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(discountPanelBtn, discountStatusLb);
+        JOptionPane.showMessageDialog(this, "Chưa Phát Triển");
     }//GEN-LAST:event_orderLbMouseClicked
 
     private void discountLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_discountLbMouseClicked
-//        this.onClicked(discountPanelBtn, discountStatusLb);
-//        this.unClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(statisticPanelBtn, statisticStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
+        JOptionPane.showMessageDialog(this, "Chưa Phát Triển");
     }//GEN-LAST:event_discountLbMouseClicked
 
     private void exitLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLbMouseClicked
-        System.exit(0);
+        new LogOutView().setVisible(true);
     }//GEN-LAST:event_exitLbMouseClicked
 
     private void userLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLbMouseClicked
-//        this.onClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(statisticPanelBtn, statisticStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(discountPanelBtn, discountStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
-//        showPanel(customerPanel);
+        JOptionPane.showMessageDialog(this, "Chưa Phát Triển");
     }//GEN-LAST:event_userLbMouseClicked
 
     private void statisticLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statisticLbMouseClicked
-//        this.onClicked(statisticPanelBtn, staffStatusLb);
-//        this.unClicked(orderPanelBtn, orderStatusLb);
-//        this.unClicked(sellPanelBtn, sellStatusLb);
-//        this.unClicked(staffPanelBtn, staffStatusLb);
-//        this.unClicked(userPanelBtn, userStatusLb);
-//        this.unClicked(discountPanelBtn, discountStatusLb);
-//        this.unClicked(productPanelBtn, productStatusLb);
+        JOptionPane.showMessageDialog(this, "Chưa Phát Triển");
     }//GEN-LAST:event_statisticLbMouseClicked
-
-    private void labelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuMouseClicked
-        closeMenuBar();
-//        labelOpenMenu.setVisible(true);
-    }//GEN-LAST:event_labelMenuMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainApplicationView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel discountLb;
@@ -643,15 +527,14 @@ public class MainApplicationView extends javax.swing.JFrame {
     private javax.swing.JLabel exitLb;
     private javax.swing.JPanel exitStatusLb;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JLabel labelMenu;
     private javax.swing.JLabel orderLb;
     private javax.swing.JPanel orderPanelBtn;
     private javax.swing.JPanel orderStatusLb;
     private javax.swing.JPanel panelContainer;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelMenu;
-    private javax.swing.JLabel productLb;
     private javax.swing.JPanel productStatusLb;
+    private javax.swing.JLabel qlkhLb;
     private javax.swing.JPanel qlkhPanelContainer;
     private javax.swing.JLabel qlsvLbClick;
     private javax.swing.JPanel qlsvLbStatus;

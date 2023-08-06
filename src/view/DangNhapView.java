@@ -7,7 +7,7 @@ package view;
 import javax.swing.JOptionPane;
 import model.NguoiDung;
 import org.apache.log4j.BasicConfigurator;
-import service.UserService;
+import service.NguoiDungService;
 
 /**
  *
@@ -15,7 +15,7 @@ import service.UserService;
  */
 public class DangNhapView extends javax.swing.JFrame {
 
-    private UserService service = new UserService();
+    private NguoiDungService service = new NguoiDungService();
 
     public DangNhapView() {
         initComponents();
@@ -38,8 +38,8 @@ public class DangNhapView extends javax.swing.JFrame {
         txtEmail = new view.swing.MyTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelQuenMatKhau = new javax.swing.JLabel();
+        labelDangKy = new javax.swing.JLabel();
         btnLogin = new view.swing.Button();
         btnExit = new view.swing.Button();
 
@@ -64,11 +64,21 @@ public class DangNhapView extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(23, 44, 76));
         jLabel4.setText("Mật Khẩu");
 
-        jLabel5.setForeground(new java.awt.Color(23, 44, 76));
-        jLabel5.setText("<html><u>Quên Mật Khẩu</u></html>");
+        labelQuenMatKhau.setForeground(new java.awt.Color(23, 44, 76));
+        labelQuenMatKhau.setText("<html><u>Quên Mật Khẩu</u></html>");
+        labelQuenMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelQuenMatKhauMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setForeground(new java.awt.Color(23, 44, 76));
-        jLabel6.setText("<html><u>Đăng Ký</u></html>");
+        labelDangKy.setForeground(new java.awt.Color(23, 44, 76));
+        labelDangKy.setText("<html><u>Đăng Ký</u></html>");
+        labelDangKy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelDangKyMouseClicked(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(23, 44, 76));
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,9 +126,9 @@ public class DangNhapView extends javax.swing.JFrame {
                                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(panelLoginLayout.createSequentialGroup()
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(labelDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
@@ -141,8 +151,8 @@ public class DangNhapView extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +181,7 @@ public class DangNhapView extends javax.swing.JFrame {
         NguoiDung nguoiDung = service.login(email, pass);
         if (nguoiDung != null) {
             new MainApplicationView().setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Sai Tài Khoản Hoặc Mật Khẩu");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -183,6 +193,17 @@ public class DangNhapView extends javax.swing.JFrame {
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
 
     }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void labelQuenMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelQuenMatKhauMouseClicked
+        new QuenMatKhauView().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_labelQuenMatKhauMouseClicked
+
+    private void labelDangKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelDangKyMouseClicked
+        new DangKyView().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_labelDangKyMouseClicked
 
     /**
      * @param args the command line arguments
@@ -228,8 +249,8 @@ public class DangNhapView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel labelDangKy;
+    private javax.swing.JLabel labelQuenMatKhau;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JPanel panelLogin;
     private view.swing.MyPasswordField psAccout;

@@ -4,7 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import org.apache.log4j.BasicConfigurator;
+import service.NguoiDungService;
 
 /**
  *
@@ -12,6 +14,7 @@ import org.apache.log4j.BasicConfigurator;
  */
 public class QuenMatKhauView extends javax.swing.JFrame {
 
+    private NguoiDungService service = new NguoiDungService();
 
     public QuenMatKhauView() {
         initComponents();
@@ -29,10 +32,10 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         panelLogin = new javax.swing.JPanel();
         labelTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        myTextField1 = new view.swing.MyTextField();
+        txtEmail = new view.swing.MyTextField();
         jLabel3 = new javax.swing.JLabel();
-        button1 = new view.swing.Button();
-        button2 = new view.swing.Button();
+        btnXacNhan = new view.swing.Button();
+        btnQuayLai = new view.swing.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -50,11 +53,23 @@ public class QuenMatKhauView extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(23, 44, 76));
         jLabel3.setText("Email");
 
-        button1.setBackground(new java.awt.Color(23, 44, 76));
-        button1.setText("Xác Nhận");
+        btnXacNhan.setBackground(new java.awt.Color(23, 44, 76));
+        btnXacNhan.setForeground(new java.awt.Color(255, 255, 255));
+        btnXacNhan.setText("Xác Nhận");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
-        button2.setBackground(new java.awt.Color(23, 44, 76));
-        button2.setText("Quay Lại");
+        btnQuayLai.setBackground(new java.awt.Color(23, 44, 76));
+        btnQuayLai.setForeground(new java.awt.Color(255, 255, 255));
+        btnQuayLai.setText("Quay Lại");
+        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuayLaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
@@ -72,14 +87,14 @@ public class QuenMatKhauView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addGap(184, 184, 184)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelLoginLayout.createSequentialGroup()
                                 .addGap(142, 142, 142)
-                                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
@@ -90,13 +105,13 @@ public class QuenMatKhauView extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(myTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -116,7 +131,7 @@ public class QuenMatKhauView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -126,6 +141,26 @@ public class QuenMatKhauView extends javax.swing.JFrame {
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
 
     }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        if (txtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không Được Để Trống");
+            return;
+        }
+
+        String email = txtEmail.getText();
+        boolean doiMatKhauThanhCong = service.doiMatKhau(email);
+        if (doiMatKhauThanhCong) {
+            JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công - Hãy Check Email");
+        } else {
+            JOptionPane.showMessageDialog(this, "Đã Xảy Ra Lỗi");
+        }
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
+        this.dispose();
+        new DangNhapView().setVisible(true);
+    }//GEN-LAST:event_btnQuayLaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,12 +204,12 @@ public class QuenMatKhauView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.swing.Button button1;
-    private view.swing.Button button2;
+    private view.swing.Button btnQuayLai;
+    private view.swing.Button btnXacNhan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel labelTitle;
-    private view.swing.MyTextField myTextField1;
     private javax.swing.JPanel panelLogin;
+    private view.swing.MyTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }

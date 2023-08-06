@@ -4,8 +4,6 @@
  */
 package model;
 
-import service.*;
-
 /**
  *
  * @author H.Long
